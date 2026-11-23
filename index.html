@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دبیرستان آینده‌سازان برتر // گره گوز نسل فردا</title>
+<meta name="theme-color" content="#060a08">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#060a08;
+    --surface:#0d1511;
+    --surface-2:#111b16;
+    --line:#1d2e26;
+    --text:#e7f3ec;
+    --muted:#7f9a8d;
+    --accent:#36ffb0;
+    --accent-dim:#1c7a57;
+    --accent-2:#4fc3ff;
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Vazirmatn',sans-serif;
+    line-height:1.8;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);
+    z-index:50;background:var(--bg);
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* background circuit grid */
+  .grid-bg{
+    position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 0%, black 30%, transparent 75%);
+  }
+
+  header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(6,10,8,.88);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    padding-top:env(safe-area-inset-top,0px);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.05rem;letter-spacing:.02em}
+  .brand .dot{width:10px;height:10px;border-radius:2px;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+  nav ul{display:flex;gap:28px;list-style:none}
+  nav ul a{font-size:.92rem;color:var(--muted);transition:color .2s}
+  nav ul a:hover{color:var(--accent)}
+  .nav-cta{border:1px solid var(--accent-dim);color:var(--accent);padding:8px 18px;border-radius:3px;font-size:.88rem;transition:.2s}
+  .nav-cta:hover{background:var(--accent);color:#04120b;border-color:var(--accent)}
+  .burger{display:none;background:none;border:none;color:var(--text);font-size:1.4rem}
+
+  /* hero */
+  .hero{position:relative;padding:110px 0 90px;z-index:1}
+  .status-row{display:flex;gap:10px;align-items:center;color:var(--accent);font-size:.82rem;margin-bottom:28px}
+  .status-row .pulse{width:7px;height:7px;background:var(--accent);border-radius:50%;animation:pulse 1.8s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  .hero h1{
+    font-size:clamp(2.4rem,6vw,4.4rem);font-weight:900;line-height:1.15;max-width:820px;
+  }
+  .hero h1 span{color:var(--accent)}
+  .hero p{color:var(--muted);font-size:1.1rem;max-width:560px;margin-top:22px}
+  .hero-actions{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+  .btn-primary{background:var(--accent);color:#04120b;padding:14px 28px;border-radius:3px;font-weight:700}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);padding:14px 28px;border-radius:3px}
+  .hero-meta{display:flex;gap:34px;margin-top:70px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:26px}
+  .hero-meta div span{display:block;font-size:.76rem;color:var(--muted)}
+  .hero-meta div strong{font-size:1.5rem;color:var(--accent-2)}
+
+  section{position:relative;z-index:1;padding:80px 0;border-top:1px solid var(--line)}
+  .eyebrow{color:var(--accent);font-size:.84rem;margin-bottom:10px}
+  .sec-title{font-size:clamp(1.6rem,3.4vw,2.2rem);font-weight:900;max-width:640px}
+  .sec-lead{color:var(--muted);max-width:620px;margin-top:14px}
+
+  /* signal / news */
+  .signal-list{margin-top:44px;display:flex;flex-direction:column}
+  .signal-item{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:24px 0;border-top:1px solid var(--line)}
+  .signal-item:last-child{border-bottom:1px solid var(--line)}
+  .signal-date{color:var(--accent-2);font-size:.86rem}
+  .signal-item h3{font-size:1.15rem;margin-bottom:8px}
+  .signal-item p{color:var(--muted);font-size:.95rem}
+
+  /* programs */
+  .prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line);margin-top:44px;border:1px solid var(--line)}
+  .prog-card{background:var(--surface);padding:28px 24px}
+  .prog-card .num{color:var(--accent-dim);font-size:.8rem}
+  .prog-card h3{margin-top:10px;font-size:1.1rem}
+  .prog-card p{color:var(--muted);font-size:.9rem;margin-top:8px}
+
+  /* principles */
+  .principles{margin-top:44px;display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .principle{background:var(--surface);padding:30px 26px;display:grid;grid-template-columns:50px 1fr;gap:20px}
+  .principle .mark{color:var(--accent);font-size:1.6rem;font-weight:900}
+  .principle h3{font-size:1.2rem;margin-bottom:8px}
+  .principle p{color:var(--muted);font-size:.95rem;max-width:620px}
+
+  /* timeline */
+  .timeline{margin-top:50px;border-right:1px solid var(--line);padding-right:28px;display:flex;flex-direction:column;gap:38px}
+  .t-item{position:relative}
+  .t-item::before{content:"";position:absolute;right:-33px;top:4px;width:9px;height:9px;background:var(--accent);border-radius:50%;box-shadow:0 0 10px var(--accent)}
+  .t-item .yr{color:var(--accent-2);font-size:.85rem}
+  .t-item h3{margin-top:6px;font-size:1.1rem}
+  .t-item p{color:var(--muted);font-size:.92rem;margin-top:6px;max-width:560px}
+
+  /* about + contact */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;margin-top:40px}
+  .about-grid p{color:var(--muted);margin-bottom:16px}
+  .contact-card{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:28px}
+  .contact-card div{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line);font-size:.92rem}
+  .contact-card div:first-child{border-top:none}
+  .contact-card span:first-child{color:var(--muted)}
+
+  .staff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:44px}
+  .staff-card{background:var(--surface);padding:26px 22px;text-align:center}
+  .staff-photo{width:88px;height:88px;border-radius:50%;margin:0 auto 16px;background:linear-gradient(135deg,var(--surface-2),var(--line));border:1px solid var(--line)}
+  .staff-card h3{font-size:1rem}
+  .staff-card p{color:var(--muted);font-size:.86rem;margin-top:4px}
+
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:44px}
+  .gal-item{position:relative;border:1px solid var(--line);border-radius:4px;min-height:140px;display:flex;align-items:flex-end;padding:14px;overflow:hidden}
+  .gal-item::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.15) 0 2px,transparent 2px 4px);pointer-events:none}
+  .gal-item span{position:relative;z-index:1;font-size:.86rem;color:var(--text);background:rgba(6,10,8,.55);padding:4px 10px;border-radius:3px}
+  @media(max-width:760px){.gallery-grid{grid-template-columns:repeat(2,1fr)}.gal-item[style*="span 2"]{grid-column:span 2 !important}}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:.85rem}
+
+  @media(max-width:760px){
+    nav ul{display:none}
+    .burger{display:block}
+    .about-grid{grid-template-columns:1fr}
+    .signal-item{grid-template-columns:1fr;gap:6px}
+    .hero{padding:80px 0 60px}
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><span class="dot"></span> دبیرستان آینده‌سازان برتر</div>
+    <nav><ul>
+      <li><a href="#programs"> برترین دانش آموز ها(خایه مال ها)</a></li>
+      <li><a href="#signal">خبر های مهم لو رفته</a></li>
+      <li><a href="#principles">چص</a></li>
+      <li><a href="#staff">متجاوزان و کارکنان</a></li>
+      <li><a href="#about">درباره ما</a></li>
+    </ul></nav>
+    <a class="nav-cta" href="#gallery">پرونده های لو رفته</a>
+    <button class="burger">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="status-row"><span class="pulse"></span>فعال اکنون · سال تحصیلی 1405-1406</div>
+    <h1>جایی که larper فردا <span>امروز</span> ساخته می‌شوند.</h1>
+    <p>کودکانتان را به ما بسپارید </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#gallery">عکس‌های زندان</a>
+      <a class="btn-ghost" href="#programs">مشاهده موفقیت دانش‌آموزان </a>
+    </div>
+    <div class="hero-meta">
+      <div><strong>۱۸</strong><span>اعتیاد</span></div>
+      <div><strong>۹۴٪</strong><span> کارتن خوابی </span></div>
+      <div><strong>۴</strong><span>خلافکاری  </span></div>
+      <div><strong>۲۲</strong><span>  بیکاری</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="signal">
+  <div class="wrap">
+    <div class="eyebrow">خبر های اخیر</div>
+    <h2 class="sec-title">خبر های مهم متجاوزان </h2>
+    <p class="sec-lead">گزارش کوتاهی از آنچه این ماه در آینده‌سازان برتر گذشت.</p>
+    <div class="signal-list">
+      <div class="signal-item">
+        <div class="signal-date">۱۴۰۴/۰۸/۰۲</div>
+        <div><h3>تیم رباتیک مدرسه به مرحله کشوری راه نیافت</h3><p>تیم دانش‌آموزی رباتیک پس از دو ماه آماده‌سازی، رتبه دوم مسابقات استانی را کسب نکرد و به مرحله نهایی کشوری صعود نکرد.</p></div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-date">۱۴۰۴/۰۷/۲۵</div>
+        <div><h3> لو رفتن پرونده بزرگ جزیره آینده سازان</h3><p>لو رفتن خبر سوگوارانه جزیره اینده سازان با عامل سه گانه ناصر پاکتی محسن امیری و رضا اقبالی</p></div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-date">1403/۰۷/۱۰</div>
+        <div><h3>لو رفتن فروشنده فیلم </h3><p>لو رفتن قمری که فروشنده فیلم بود.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="programs">
+  <div class="wrap">
+    <div class="eyebrow">برترین دانش آموز ها (گوزو ها و خایه مالان)</div>
+    <h2 class="sec-title">مسیری متناسب با علاقه   هر احمق</h2>
+    <p class="sec-lead">هر رشته با برنامه درسی وزارت خزش و پرورش همراه با کارگاه‌های غیر تخصصی تکمیلی ارائه می شود.</p>
+    <div class="prog-grid">
+      <div class="prog-card"><div class="num">۰۱</div><h3>سروش گوزماسبی</h3><p>بسیار دانا و خایه مال</p></div>
+      <div class="prog-card"><div class="num">۰۲</div><h3>ابول جنوبی </h3><p>یکی از قربانیان جزیره آینده سازان </p></div>
+      <div class="prog-card"><div class="num">۰۳</div><h3>پویا مروتی جو</h3><p>دلقکی با نشانه های فیزیکی رحیم استرلینگ</p></div>
+      <div class="prog-card"><div class="num">۰۴</div><h3>حسین تورابی</h3><p>یکی از اصلی ترین و احمق ترین و خایه مال ترین مدرسه  </p></div>
+    </div>
+  </div>
+</section>
+
+<section id="principles">
+  <div class="wrap">
+    <div class="eyebrow">اصول ما</div>
+    <h2 class="sec-title">آنچه آینده‌سازان برتر را متفاوت می‌کند</h2>
+    <div class="principles">
+      <div class="principle"><div class="mark">۰۱</div><div><h3>یادگیری بی اراده</h3><p>  نادانی .</p></div></div>
+      <div class="principle"><div class="mark">۰۲</div><div><h3>مشاوره تحصیلی پرده ای</h3><p>هر دانش‌آموز یک مشاور ثابت دارد که مسیر تحصیلی و انتخاب رشته او را در طول سال همراهی نمی کند.</p></div></div>
+      <div class="principle"><div class="mark">۰۳</div><div><h3>شفافیت با کوندکتان</h3><p>گزارش پیشرفت هر دانش‌آموز به‌صورت ماهانه و شفاف در اختیار والدین قرار می‌گیرد.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="eyebrow">پرونده های لو رفته </div>
+    <h2 class="sec-title">عکس‌های متجاوزان</h2>
+    <p class="sec-lead">تصاویری از فضای غیر حرفه ای و غیر آموزشی کارگاه‌ها و رویدادهای آینده‌سازان برتر.</p>
+    <div class="gallery-grid">
+      <div class="gal-item" style="grid-column:span 4;grid-row:span 4;background:linear-gradient(170deg,#0d1511,#163026)"><span>نمای  بسیار خطرناک عقاب و کودکان بی گناه</span><img src="e:\ASB\ebe1a27f-943b-4df4-a0aa-ef56c3eb6f30.jpg" alt="عقاب دامغان"></div>
+      <div class="gal-item" style="grid-column:span 4;grid-row:span 4;background:linear-gradientt(1deg,#102018,#1c3a2c)"><span>عروسی گرگ</span><img src="e:\ASB\c4b6fd8f-1706-4051-8d55-24c92ce27cfa.jpg" alt="گرگ در لباس میش"></div>
+      <div class="gal-item" style="grid-column:span 4;grid-row:span 4;background:linear-gradient(170deg,#0f1c1a,#163a33)"><span>به شدت خطرناک و قربانی آینده‌سازان bdsm  </span><img src="e:\ASB\20984512-f8c6-48e2-9c29-1e5e12ec769b.jpg" alt="کسری خایه مرد"></div>
+      <div class="gal-item" style="grid-column:span 4;grid-row:span 4;background:linear-gradient(170deg,#101b14,#1e3524)"><span> بچه سال هفتمی </span><img src="e:\ASB\7bca6b0c-23af-48d7-9a7a-7cef10639c7b.jpg" alt="اینم پایه مرد"></div>
+      <div class="gal-item" style="grid-column:span 4;grid-row:span 4;background:linear-gradient(170deg,#0e1816,#17352c)"><span>بی ادبی یک احمق قربانی </span><img src="e:\ASB\91f021b1-abb7-4259-931c-2150c9453d74.jpg" alt=""></div>
+      <div class="gal-item" style="grid-column:span 4;background:linear-gradient(170deg,#0d1a14,#1b3a2a)"><span> نادانی یک مسی فن - رویداد </span><img src="e:\ASB\2567f433-91a5-4b59-a239-11cd09e1a5c0.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section id="staff">
+  <div class="wrap">
+    <div class="eyebrow">تیم متجاوزان</div>
+    <h2 class="sec-title">متجاوزان و pedophil
+    <p class="sec-lead">افرادی که هر روز در کنار دانش‌آموزان هستند.</p>
+    <div class="staff-grid">
+      <div class="staff-card"><div class="staff-photo"></div><h3>استاد منتخبلو</h3><p>مدیر مدرسه</p></div>
+      <div class="staff-card"><div class="staff-photo"></div><h3> lttle-saint-james island جزایری </h3><p>معاون آموزشی</p></div>
+      <div class="staff-card"><div class="staff-photo"></div><h3> مجید عباس آبادی </h3><p>دبیر ریاضی و فیزیک</p></div>
+      <div class="staff-card"><div class="staff-photo"></div><h3> محسن امیری </h3><p>دبیر علوم تجربی</p></div>
+      <div class="staff-card"><div class="staff-photo"></div><h3>علی اهنپز</h3><p>دبیر فناوری اطلاعات</p></div>
+      <div class="staff-card"><div class="staff-photo"></div><h3> مستر بین پاکتی بزرگ </h3><p>مشاور تحصیلی</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">درباره مدرسه</div>
+    <h2 class="sec-title">مسیر گوز ما</h2>
+    <div class="about-grid">
+      <div>
+        <p>دبیرستان آینده‌سازان برتر از سال ۱۳۸۶ با هدف تربیت دانش‌آموزانی توانمند در علوم و فناوری فعالیت خود را آغاز کرد. امروز این مدرسه با کادر آموزشی مجرب و امکانات به‌روز، یکی از مراکز شناخته‌شده آموزشی منطقه است.</p>
+        <p>باور ما این است که هر دانش‌آموز ظرفیت متفاوتی دارد و رسالت مدرسه، کشف و پرورش همان ظرفیت است؛ نه قالب‌بندی یکسان همه در یک مسیر.</p>
+        <div class="timeline">
+          <div class="t-item"><div class="yr">۱۳۸۶</div><h3>تأسیس مدرسه</h3><p>آغاز فعالیت با دو کلاس پایه دهم و هفت دانش‌آموز.</p></div>
+          <div class="t-item"><div class="yr">۱۳۹۵</div><h3>راه‌اندازی رشته مهندسی و رباتیک</h3><p>اولین مدرسه منطقه با کارگاه رباتیک اختصاصی.</p></div>
+          <div class="t-item"><div class="yr">۱۴۰۲</div><h3>ساختمان و آزمایشگاه‌های جدید</h3><p>انتقال به ساختمان جدید با ۲۲ کارگاه و آزمایشگاه تخصصی.</p></div>
+        </div>
+      </div>
+      <div class="contact-card" id="contact">
+        <h3 style="margin-bottom:16px">اطلاعات تماس</h3>
+        <div><span>تلفن</span><span>1-05543212</span></div>
+        <div><span>ایمیل</span><span>Egreg@gmail.com</span></div>
+        <div><span>آدرس</span><span>دریای اطلس نبش جنوبی جزیره کوبا جزیره بزرگ آینده سازان </span></div>
+        <div><span>ساعات ثبت‌نام</span><span>شنبه تا چهارشنبه، 10 تا ۱۴</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <div>دبیرستان آینده‌سازان برتر</div>
+    <div>© تمامی حقوق محفوظ است</div>
+    <a href="#top" style="color:var(--accent)">بازگشت به بالا ▲</a>
+  </div>
+</footer>
+
+</body>
+</html>
